@@ -151,7 +151,7 @@ a:hover {
   widows: 100%;
 }
 .details-info {
-  flex: 1 1 30rem;
+  flex: 2 1 30rem;
 }
 .details-action {
   flex: 1 1 30rem;
