@@ -1,6 +1,7 @@
 import React from "react";
-import data from "./../data";
+import data from "../data";
 import { Link } from "react-router-dom";
+
 export default function ProductScreen(props) {
   console.log(props.match.params.id);
   const product = data.product.find((x) => x._id === props.match.params.id);
@@ -31,7 +32,9 @@ export default function ProductScreen(props) {
         </div>
         <div className="details-action">
           <ul>
-            <li>Price: <b>${product.price}</b></li>
+            <li>
+              Price: <b>${product.price}</b>
+            </li>
             <li>Status: {product.status}</li>
             <li>
               Qty:
