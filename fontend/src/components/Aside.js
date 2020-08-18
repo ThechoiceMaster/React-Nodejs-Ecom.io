@@ -12,10 +12,10 @@ export default function Aside() {
             </button>
             <ul>
                 <li>
-                    <a href="#">Pants</a>
+                    <a href="#sa">Pants</a>
                 </li>
                 <li>
-                    <a href="#">Shirts</a>
+                    <a href="#as">Shirts</a>
                 </li>
             </ul>
             
