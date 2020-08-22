@@ -1,10 +1,13 @@
 import express from "express";
+import path from 'path';
 import data from "./data";
 import config from "./config";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import userRoute from "./routes/userRoute";
+import productRoute from "./routes/productRoute";
+import orderRoute from './routes/orderRoute'
 
 dotenv.config();
 
@@ -21,13 +24,15 @@ mongoose
 const app = express();
 app.use(bodyParser.json());
 app.use("/api/users", userRoute);
+app.use("/api/products", productRoute);
+app.use('/api/orders', orderRoute);
+
 app.get("/api/products/:id", (req, res) => {
   const productId = req.params.id;
   const product = data.product.find((x) => x._id === productId);
   if (product) res.send(product);
   else res.status(404).send({ msg: "Product Not Found." });
 });
-
 app.get("/api/products", (req, res) => {
   res.send(data.product);
 });

@@ -8,12 +8,15 @@ import {
   PRODUCT_SAVE_REQUEST,
   PRODUCT_SAVE_SUCCESS,
   PRODUCT_SAVE_FAILED,
+  PRODUCT_DELETE_REQUEST,
+  PRODUCT_DELETE_SUCCESS,
+  PRODUCT_DELETE_FAILED,
 } from "../../constants/ProductConstants";
 
 function productListReducer(state = { products: [] }, action) {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, products: [] };
     case PRODUCT_LIST_SUCCESS:
       return { loading: false, products: action.payload };
     case PRODUCT_LIST_FAILED:
@@ -44,9 +47,21 @@ function productSaveReducer(state = { product: {} }, action) {
       return { loading: false, success: true, product: action.payload };
     case PRODUCT_SAVE_FAILED:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+}
+function productDeleteReducer(state = { product: {} }, action) {
+  switch (action.type) {
+    case PRODUCT_DELETE_REQUEST:
+      return { loading: true };
+    case PRODUCT_DELETE_SUCCESS:
+      return { loading: false, success: true, product: action.payload };
+    case PRODUCT_DELETE_FAILED:
+      return { loading: false, error: action.payload };
 
     default:
       return state;
   }
 }
-export { productListReducer, productDetailsReducer, productSaveReducer };
+export { productListReducer, productDetailsReducer, productSaveReducer, productDeleteReducer };
